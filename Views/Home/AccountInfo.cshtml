@@ -1,0 +1,23 @@
+@model MyViewModel
+@await Html.PartialAsync("_Nav")
+<div class="text-center">
+    <h1>Account Information</h1>
+    <h3>Username: @Model.User.Username</h3>
+    <h3>Email: @Model.User.Email</h3>
+    <h1>Saved Facts</h1>
+</div>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        @foreach (Association a in @Model.User.Associations)
+        {
+            <div class="card overflow-auto m-2 border-info" style="width: 16rem; height: 15rem;">
+                <div class="card-body p-4 text-center">
+                    <p class="card-text">@a.Fact.fact</p>
+                    <form asp-action="" asp-controller="Home" method="post">
+                        <button type="submit" class="btn btn-info">Fact Info</button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>
